@@ -1,0 +1,9 @@
+{
+  "name": "gtfs-rt-map",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "gtfs-realtime-bindings": "^1.1.1"
+  }
+}

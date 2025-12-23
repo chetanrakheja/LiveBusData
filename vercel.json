@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/vehicles.js": {
+      "maxDuration": 10
+    }
+  }
+}

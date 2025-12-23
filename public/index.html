@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Delhi GTFS-RT Vehicle Map</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="toolbar">
+      <div class="brand">
+        <div class="brand__title">
+          <span class="logo-text">LB</span>
+          Delhi GTFS-RT
+        </div>
+        <div class="brand__subtitle">Live vehicle positions</div>
+      </div>
+      <div class="status" id="status">Loading...</div>
+    </header>
+
+    <main class="layout">
+      <section class="map" id="map"></section>
+      <aside class="panel">
+        <div class="panel__header">
+          <h2>Feed Snapshot</h2>
+          <button class="toggle-button" id="toggleSnapshot" type="button">
+            Collapse
+          </button>
+        </div>
+        <div class="metric">
+          <span class="metric__label">Vehicles</span>
+          <span class="metric__value" id="vehicleCount">0</span>
+        </div>
+        <div class="metric">
+          <span class="metric__label">Last Update</span>
+          <span class="metric__value" id="lastUpdate">-</span>
+        </div>
+        <div class="legend">
+          <div class="legend__item">
+            <span class="dot"></span>
+            <span>Vehicle position</span>
+          </div>
+        </div>
+        <p class="note">
+          Tip: click a marker for vehicle metadata. This view refreshes every 5
+          seconds.
+        </p>
+        <button class="link-button" id="changeFeed">Change feed URL</button>
+      </aside>
+    </main>
+
+    <button class="floating-toggle" id="expandSnapshot" type="button">
+      Show snapshot
+    </button>
+
+    <div class="modal" id="feedModal" aria-hidden="true">
+      <div class="modal__card" role="dialog" aria-modal="true">
+        <h3>Choose a feed</h3>
+        <p>
+          Enter a GTFS-RT VehiclePositions URL. This will be fetched directly in
+          your browser.
+        </p>
+        <input
+          id="feedUrlInput"
+          type="url"
+          placeholder="https://example.com/VehiclePositions.pb"
+          spellcheck="false"
+        />
+        <div class="modal__actions">
+          <button class="btn btn--ghost" id="useServerBtn">
+            Use server feed
+          </button>
+          <button class="btn" id="useCustomBtn">Use this URL</button>
+        </div>
+        <div class="modal__note" id="feedModalNote"></div>
+      </div>
+    </div>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
